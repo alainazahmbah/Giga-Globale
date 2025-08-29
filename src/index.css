@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hero image fade + slow zoom */
+@keyframes heroZoomFade {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.hero-animate {
+  animation: heroZoomFade 6s ease-in-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* Slide-up fade-in animation */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation to blocks with staggered delay */
+.animate-country {
+  opacity: 0; /* start hidden */
+  animation: fadeSlideUp 0.8s ease forwards;
+}
+
+.animate-country:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.animate-country:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.animate-country:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.animate-country:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.animate-country:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.animate-country:nth-child(6) {
+  animation-delay: 1.2s;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(39, 122, 255, 0.4), 0 0 20px rgba(39, 122, 255, 0.2);
+  }
+  50% {
+     box-shadow: 0 0 25px rgba(39, 122, 255, 0.6), 0 0 45px rgba(39, 122, 255, 0.3);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+@layer utilities {
+  .animate-fade-up {
+    @apply transform transition-all duration-1000 ease-out translate-y-6 opacity-100;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 0.3s;
+  }
+}
+plugins: [
+  require('@tailwindcss/aspect-ratio'),
+],
+
